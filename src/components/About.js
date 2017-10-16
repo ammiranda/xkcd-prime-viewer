@@ -1,25 +1,23 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import AboutText from './AboutText';
 import {
     Modal,
     ModalHeader,
     ModalBody
 } from 'reactstrap';
 
-class About extends Component {
-   constructor(props) {
-       super(props);
-       this.state = {
-           modal: this.props.show
-       };
-
-       this.toggle = this.toggle.bind(this);
-   }
+class About extends PureComponent {
 
    render() {
        return (
-           <div>
-
-           </div>
+        <Modal isOpen={this.props.showAbout} toggle={this.props.toggleAbout}>
+            <ModalHeader toggle={this.props.toggleAbout}>
+                About
+            </ModalHeader>
+            <ModalBody>
+                <AboutText />
+            </ModalBody>
+          </Modal>
        )
    }
 }

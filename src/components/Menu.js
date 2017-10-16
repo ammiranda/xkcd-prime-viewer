@@ -12,23 +12,15 @@ import {
 import AboutText from './AboutText';
 
 class Menu extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-          showAbout: false
-      }
 
-      this.toggleAbout = this.toggleAbout.bind(this);
-  }
-
-  toggleAbout(e) {
-    e.preventDefault();
-    this.setState((prevState, props) => {
-        return {
-            showAbout: !prevState.showAbout
-        }
-    });
-  }
+//   toggleAbout(e) {
+//     e.preventDefault();
+//     this.setState((prevState, props) => {
+//         return {
+//             showAbout: !prevState.showAbout
+//         }
+//     });
+//   }
 
   render() {
     return (
@@ -37,18 +29,10 @@ class Menu extends Component {
             <NavbarBrand href="/">xkcd Prime Viewer</NavbarBrand>
             <Nav className="ml-auto" navbar>
                 <NavItem>
-                    <NavLink href="#" onClick={(e) => { this.toggleAbout(e)} }>About</NavLink>
+                    <NavLink href="#" onClick={(e) => { this.props.toggleAbout(e)} }>About</NavLink>
                 </NavItem>
             </Nav>
           </Navbar>
-          <Modal isOpen={this.state.showAbout} toggle={this.toggleAbout}>
-            <ModalHeader toggle={this.toggleAbout}>
-                About
-            </ModalHeader>
-            <ModalBody>
-                <AboutText />
-            </ModalBody>
-          </Modal>
       </div>
     );
   }
